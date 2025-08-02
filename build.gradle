@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.18.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.6.15'
     }
 }
 
@@ -11,8 +11,8 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
     
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 17
+    targetCompatibility = 17
     
     repositories {
         mavenCentral()
@@ -21,8 +21,8 @@ allprojects {
     // Force dependency versions - common in enterprise
     configurations.all {
         resolutionStrategy {
-            force 'org.springframework:spring-core:5.2.0.RELEASE'
-            force 'org.springframework:spring-context:5.2.0.RELEASE'
+            force 'org.springframework:spring-core:5.3.27'
+            force 'org.springframework:spring-context:5.3.27'
             force 'junit:junit:4.13.2'
             force 'org.mockito:mockito-core:3.12.4'
         }

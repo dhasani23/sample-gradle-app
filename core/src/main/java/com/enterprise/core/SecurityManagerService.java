@@ -2,7 +2,8 @@ package com.enterprise.core;
 
 import java.security.Permission;
 
-@SuppressWarnings("removal")
+// Add stronger suppression for Java 17's SecurityManager deprecation
+@SuppressWarnings({"removal", "deprecation"})
 public class SecurityManagerService {
     private static final SecurityManager customSecurityManager = new CustomSecurityManager();
     
@@ -27,6 +28,7 @@ public class SecurityManagerService {
         return true;
     }
     
+    @SuppressWarnings({"removal", "deprecation"})
     private static class CustomSecurityManager extends SecurityManager {
         @Override
         public void checkPermission(Permission perm) {

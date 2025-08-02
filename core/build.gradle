@@ -1,8 +1,13 @@
 apply plugin: EnterprisePlugin
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.1.18.RELEASE'
-    implementation 'org.springframework:spring-core:5.2.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.15'
+    implementation 'org.springframework:spring-core:5.3.27'
+    
+    // Java EE APIs that were removed in Java 11+
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'javax.activation:activation:1.1.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 }
 
 enterprise {

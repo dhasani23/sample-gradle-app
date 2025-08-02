@@ -4,7 +4,7 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     implementation project(':service')
     implementation project(':core')
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.1.18.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.15'
     
     // Java EE APIs that were removed in Java 11
     implementation 'javax.xml.bind:jaxb-api:2.3.1'

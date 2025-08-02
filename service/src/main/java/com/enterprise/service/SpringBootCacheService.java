@@ -7,7 +7,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import javax.annotation.PostConstruct;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 @Service
 @EnableCaching
@@ -20,17 +22,20 @@ public class SpringBootCacheService {
     
     @PostConstruct
     public void init() {
-        // javax.annotation usage - needs migration to jakarta.annotation in Java 17
+        // javax.annotation usage - will need migration to jakarta.annotation in future Java versions
         System.out.println("Initializing cache service with type: " + cacheType);
     }
     
     @Cacheable("legacyData")
     public String getCachedData(String key) {
-        // Simulate expensive operation with deprecated Date constructor
-        @SuppressWarnings("deprecation")
-        Date timestamp = new Date(2023, 11, 25);
+        // Replace deprecated Date constructor with modern time API
+        Calendar cal = Calendar.getInstance();
+        cal.set(2023, Calendar.DECEMBER, 25);
         
-        return "Cached data for " + key + " at " + timestamp.toString();
+        // Or use Java 8+ time API
+        LocalDateTime timestamp = LocalDateTime.of(2023, 12, 25, 0, 0);
+        
+        return "Cached data for " + key + " at " + timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
     
     // Spring Boot Configuration Properties - binding will change in newer versions

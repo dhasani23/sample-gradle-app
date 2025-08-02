@@ -9,3 +9,7 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
 }
+
+// Add Java compatibility settings for buildSrc
+sourceCompatibility = 17
+targetCompatibility = 17

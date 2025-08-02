@@ -1,0 +1,61 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. See https://docs.gradle.org/7.6/userguide/gradle_daemon.html#sec:disabling_the_daemon.
+Daemon will be stopped at the end of the build 
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy UP-TO-DATE
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+> Task :buildSrc:assemble UP-TO-DATE
+> Task :buildSrc:compileTestJava NO-SOURCE
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources NO-SOURCE
+> Task :buildSrc:testClasses UP-TO-DATE
+> Task :buildSrc:test NO-SOURCE
+> Task :buildSrc:check UP-TO-DATE
+> Task :buildSrc:build UP-TO-DATE
+> Task :clean
+> Task :api:clean
+> Task :core:clean
+> Task :service:clean
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :jar
+> Task :assemble
+> Task :check
+> Task :build
+> Task :core:compileJava
+> Task :core:processResources NO-SOURCE
+> Task :core:classes
+> Task :core:jar
+
+> Task :service:compileJava
+/Users/davhasan/Downloads/sample-gradle-app/service/src/main/java/com/enterprise/service/LegacyDataService.java:34: warning: [deprecation] finalize() in Object has been deprecated
+    protected void finalize() throws Throwable {
+                   ^
+/Users/davhasan/Downloads/sample-gradle-app/service/src/main/java/com/enterprise/service/LegacyDataService.java:36: warning: [deprecation] finalize() in Object has been deprecated
+        super.finalize();
+             ^
+2 warnings
+
+> Task :service:processResources NO-SOURCE
+> Task :service:classes
+> Task :service:jar
+> Task :api:compileJava
+> Task :api:processResources
+> Task :api:classes
+> Task :api:bootJarMainClassName
+> Task :api:bootJar
+> Task :api:jar
+> Task :api:assemble
+> Task :api:check
+> Task :api:build
+> Task :core:assemble
+> Task :core:check
+> Task :core:build
+> Task :service:assemble
+> Task :service:check
+> Task :service:build
+
+BUILD SUCCESSFUL in 3s
+16 actionable tasks: 14 executed, 2 up-to-date

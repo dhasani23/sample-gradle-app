@@ -14,7 +14,7 @@ class EnterprisePlugin implements Plugin<Project> {
         }
         
         project.afterEvaluate {
-            // Force Java 8 compatibility checks
+            // Update to allow Java 17 compatibility
             project.tasks.withType(JavaCompile) {
                 options.compilerArgs += ['-Xlint:deprecation']
             }
