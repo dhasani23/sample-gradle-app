@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.18.RELEASE'
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    
+    repositories {
+        mavenCentral()
+    }
+    
+    // Force dependency versions - common in enterprise
+    configurations.all {
+        resolutionStrategy {
+            force 'org.springframework:spring-core:5.2.0.RELEASE'
+            force 'org.springframework:spring-context:5.2.0.RELEASE'
+            force 'junit:junit:4.13.2'
+            force 'org.mockito:mockito-core:3.12.4'
+        }
+    }
+    
+    // Enterprise heap constraints
+    tasks.withType(Test) {
+        maxHeapSize = "256m"
+    }
+    
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+    }
+}
+
+subprojects {
+    dependencies {
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.mockito:mockito-core:3.12.4'
+        testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
+        testImplementation 'org.powermock:powermock-api-mockito2:2.0.9'
+    }
+}

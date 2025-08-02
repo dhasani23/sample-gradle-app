@@ -1,0 +1,40 @@
+version: 2.1
+
+executors:
+  java8-executor:
+    docker:
+      - image: cimg/openjdk:8.0
+    environment:
+      GRADLE_OPTS: -Xmx256m -XX:MaxPermSize=128m
+      JAVA_TOOL_OPTIONS: -Djava.security.manager=default
+
+jobs:
+  build:
+    executor: java8-executor
+    steps:
+      - checkout
+      - run:
+          name: Setup Enterprise Environment
+          command: |
+            echo "export ENTERPRISE_ENV=ci" >> $BASH_ENV
+            echo "export INTERNAL_REPO_URL=http://mock-internal-repo" >> $BASH_ENV
+      - run:
+          name: Download Dependencies
+          command: ./gradlew dependencies --no-daemon
+      - run:
+          name: Compile
+          command: ./gradlew compileJava --no-daemon
+      - run:
+          name: Run Tests
+          command: ./gradlew test --no-daemon
+          environment:
+            JAVA_OPTS: -Xmx256m -XX:MaxPermSize=128m
+      - run:
+          name: Build Application
+          command: ./gradlew build --no-daemon
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build

@@ -1,0 +1,12 @@
+// Simulate enterprise plugin management
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'enterprise-transformation-test'
+
+include 'core'
+include 'service'
+include 'api'
